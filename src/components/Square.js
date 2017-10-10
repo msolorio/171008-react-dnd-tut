@@ -3,22 +3,23 @@ import PropTypes from 'prop-types';
 
 export default class Square extends React.Component {
   static propTypes = {
-    black: PropTypes.bool
-  };
+    brown: PropTypes.bool
+  }
 
   render() {
-    const { black } = this.props;
-
-    const fill = black ? 'black' : 'white';
-    const pieceColor = black ? 'white' : 'black';
+    const { brown } = this.props;
+    const fill = brown ? '#92441f' : '#f7e6d0';
+    const stroke = brown ? '#f7e6d0' : '#92441f';
 
     return (
-      <div className="Square" style={{
-        backgroundColor: fill,
-        color: pieceColor
-      }}>
+      <div className="square"
+        style={{
+          backgroundColor: fill,
+          color: stroke
+        }}>
         {this.props.children}
       </div>
     );
   }
+
 }

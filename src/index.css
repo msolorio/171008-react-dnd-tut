@@ -4,7 +4,15 @@ body {
   font-family: sans-serif;
 }
 
-.Square {
+.squareWrap {
+  width: 12.5%;
+  height: 12.5%;
+}
+
+.square {
   height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
