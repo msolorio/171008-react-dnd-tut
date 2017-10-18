@@ -26,9 +26,9 @@ export class Board extends React.Component {
 
     return (
       <div key={i}
-        style={{width: '12.5%', height: '12.5%'}}>
-        <BoardSquare x={x}
-          y={y}>
+        style={{width: '12.5%',
+        height: '12.5%'}}>
+        <BoardSquare x={x} y={y}>
           {this.renderPiece(x, y)}
         </BoardSquare>
       </div>
