@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ItemTypes } from '../Constants';
 import { DragSource } from 'react-dnd';
+import dragPreviewSrc from '../dragPreviewSrc';
 
 const knightSource = {
   beginDrag(props) {
@@ -12,24 +13,33 @@ const knightSource = {
 function collect(connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),
+    connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging()
   };
 }
 
-export function Knight(props) {
+export class Knight extends Component {
 
-  const { connectDragSource, isDragging } = props;
+  componentDidMount() {
+    const img = new Image();
+    img.src = dragPreviewSrc;
+    img.onload = () => this.props.connectDragPreview(img);
+  }
 
-  return connectDragSource(
-    <div style={{
-      opacity: isDragging ? 0.5 : 1,
-      fontSize: 25,
-      fontWeight: 'bold',
-      cursor: 'move'
-    }}>
-      &#9822;
-    </div>
-  );
+  render() {
+    const { connectDragSource, isDragging } = this.props;
+
+    return connectDragSource(
+      <div style={{
+        opacity: isDragging ? 0.5 : 1,
+        fontSize: 25,
+        fontWeight: 'bold',
+        cursor: 'move'
+      }}>
+        &#9822;
+      </div>
+    );
+  }
 }
 
 Knight.proptypes = {

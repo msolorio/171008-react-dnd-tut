@@ -4,7 +4,6 @@ import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import Knight from './Knight';
 import BoardSquare from './BoardSquare';
-import { moveKnight, canMoveKnight } from '../Game';
 
 export class Board extends React.Component {
   static propTypes = {
@@ -15,9 +14,7 @@ export class Board extends React.Component {
 
   renderPiece(x, y) {
     const [knightX, knightY] = this.props.knightPosition;
-    if (x === knightX && y === knightY) {
-      return <Knight />;
-    }
+    return (x === knightX && y === knightY) && <Knight />;
   }
 
   renderSquare(i) {
@@ -26,19 +23,14 @@ export class Board extends React.Component {
 
     return (
       <div key={i}
-        style={{width: '12.5%', height: '12.5%'}}>
-        <BoardSquare x={x}
-          y={y}>
+        style={{width: '12.5%',
+        height: '12.5%'}}>
+        <BoardSquare x={x} y={y}
+          knightPosition={this.props.knightPosition}>
           {this.renderPiece(x, y)}
         </BoardSquare>
       </div>
     );
-  }
-
-  handleSquareClick(toX, toY) {
-    if (canMoveKnight(toX, toY)) {
-      moveKnight(toX, toY);
-    };
   }
 
   render() {

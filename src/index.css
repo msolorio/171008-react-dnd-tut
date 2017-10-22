@@ -16,3 +16,31 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.squareWrap {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.squareOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.squareOverlay-yellow {
+  background: yellow;
+}
+
+.squareOverlay-green {
+  background: green;
+}
+
+.squareOverlay-red {
+  background: red;
+}
