@@ -31,5 +31,16 @@ body {
   width: 100%;
   z-index: 1;
   opacity: 0.5;
+}
+
+.squareOverlay-yellow {
   background: yellow;
+}
+
+.squareOverlay-green {
+  background: green;
+}
+
+.squareOverlay-red {
+  background: red;
 }
